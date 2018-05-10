@@ -18,6 +18,8 @@
 				var year = today.getFullYear() - 2000;
 				m = checkTime(m);
 				s = checkTime(s);
+				mon = checkTime(mon);
+				day = checkTime(day);
 				document.getElementById('clock').innerHTML = m + ":" + s + ":" + hours12(h) + " " + mon + "/" + day + "/" + year;
 				var t = setTimeout(startTime, 500);
 			}
