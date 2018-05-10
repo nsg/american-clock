@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function hours12(h24) {
+				var h = h24 % 12 || 12;
+				var ampm = (h24 < 12 || h24 === 24) ? "AM" : "PM";
+				return h + ampm;
+			}
+
+			function startTime() {
+				var today = new Date();
+				var h = today.getHours();
+				var m = today.getMinutes();
+				var s = today.getSeconds();
+				var day = today.getDate();
+				var mon = today.getMonth() + 1;
+				var year = today.getFullYear() - 2000;
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('clock').innerHTML = m + ":" + s + ":" + hours12(h) + " " + mon + "/" + day + "/" + year;
+				var t = setTimeout(startTime, 500);
+			}
+			function checkTime(i) {
+				if (i < 10) { i = "0" + i };
+				return i;
+			}
+		</script>
+		<style>
+			body {
+				background: #222;
+				color: #eee;
+			}
+			#clock {
+				font-size: 8em;
+				text-align: center;
+				padding-top: 1em;
+			}
+		</style>
+	</head>
+
+	<body onload="startTime()">
+		<div id="clock"></div>
+	</body>
+</html>
